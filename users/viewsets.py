@@ -6,8 +6,7 @@ from users.serializers import CustomUserSerializer
 class CustomUserViewSet(viewsets.ModelViewSet):
     queryset = CustomUser.objects.all()
     serializer_class = CustomUserSerializer
-    permission_classes = [IsAuthenticated]  # Restricts access to authenticated users
+    permission_classes = [IsAuthenticated]
 
     def get_queryset(self):
-        # Filter the queryset to only return the authenticated user
         return CustomUser.objects.filter(phone_number=self.request.user.phone_number)

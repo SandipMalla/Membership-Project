@@ -28,7 +28,7 @@ MEMBERSHIP_DURATIONS = {
     'Diamond': 180,
 }
 
-class CustomUser(AbstractBaseUser, PermissionsMixin):  # 🔹 Add PermissionsMixin
+class CustomUser(AbstractBaseUser, PermissionsMixin):
     phone_number = models.CharField(max_length=15, unique=True)
     username = models.CharField(max_length=150, blank=True, null=True)
     membership_type = models.CharField(max_length=10, choices=MEMBERSHIP_CHOICES, default='Silver')
@@ -36,7 +36,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):  # 🔹 Add PermissionsMix
     membership_expiry_date = models.DateField(null=True, blank=True)
 
     is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)  # 🔹 Needed for admin panel access
+    is_staff = models.BooleanField(default=False)
 
     objects = CustomUserManager()
     
